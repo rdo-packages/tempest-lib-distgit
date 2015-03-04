@@ -2,8 +2,8 @@
 %global pypi_name tempest-lib
 
 Name:           python-%{pypi_name}
-Version:        0.0.4
-Release:        1%{?dist}
+Version:        XXX
+Release:        XXX%{?dist}
 Summary:        OpenStack Functional Testing Library
 
 License:        ASL 2.0
@@ -35,12 +35,12 @@ BuildArch: noarch
 Documentation for %{name}
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%setup -q -n %{pypi_name}-%{upstream_version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 %patch0001 -p1
 # make doc build compatible with python-oslo-sphinx RPM
-sed -i 's/oslosphinx/oslo.sphinx/' doc/source/conf.py
+#sed -i 's/oslosphinx/oslo.sphinx/' doc/source/conf.py
 
 
 %build
@@ -58,8 +58,9 @@ dos2unix html/_static/jquery.js
 %doc README.rst HACKING.rst AUTHORS ChangeLog CONTRIBUTING.rst
 %license LICENSE
 %{_bindir}/subunit-trace
+%{_bindir}/skip-tracker
 %{python2_sitelib}/tempest_lib
-%{python2_sitelib}/tempest_lib-%{version}-py?.?.egg-info
+%{python2_sitelib}/tempest_lib-%{upstream_version}-py?.?.egg-info
 
 %files doc
 %doc html doc/source/readme.rst
