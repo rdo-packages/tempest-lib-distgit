@@ -21,6 +21,7 @@ BuildRequires:  dos2unix
 Requires:  python-babel
 Requires:  python-fixtures
 Requires:  python-oslo-config
+Requires:  python-oslo-log
 Requires:  python-iso8601
 
 %description
