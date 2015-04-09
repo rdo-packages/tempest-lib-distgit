@@ -2,7 +2,7 @@
 %global pypi_name tempest-lib
 
 Name:           python-%{pypi_name}
-Version:        0.0.4
+Version:        0.4.0
 Release:        1%{?dist}
 Summary:        OpenStack Functional Testing Library
 
@@ -12,6 +12,7 @@ Source0:        https://pypi.python.org/packages/source/t/%{pypi_name}/%{pypi_na
 BuildArch:      noarch
 
 Patch0001: 0001-remove-shebang.patch
+Patch0002: 0002-remove-shebang-from-skip_tracker.patch
  
 BuildRequires:  python-devel
 BuildRequires:  python-pbr
@@ -39,6 +40,7 @@ Documentation for %{name}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 %patch0001 -p1
+%patch0002 -p1
 # make doc build compatible with python-oslo-sphinx RPM
 sed -i 's/oslosphinx/oslo.sphinx/' doc/source/conf.py
 
@@ -58,6 +60,7 @@ dos2unix html/_static/jquery.js
 %doc README.rst HACKING.rst AUTHORS ChangeLog CONTRIBUTING.rst
 %license LICENSE
 %{_bindir}/subunit-trace
+%{_bindir}/skip-tracker
 %{python2_sitelib}/tempest_lib
 %{python2_sitelib}/tempest_lib-%{version}-py?.?.egg-info
 
@@ -65,5 +68,8 @@ dos2unix html/_static/jquery.js
 %doc html doc/source/readme.rst
 
 %changelog
+* Thu Apr 09 2015 Steve Linabery <slinaber@redhat.com> - 0.4.0-1
+- Rebase to upstream release 0.4.0
+
 * Tue Jan 20 2015 Steve Linabery <slinaber@redhat.com> - 0.0.4-1
 - Initial package.
