@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Functional Testing Library
 
 License:        ASL 2.0
@@ -23,6 +23,9 @@ Requires:  python-babel
 Requires:  python-fixtures
 Requires:  python-oslo-config
 Requires:  python-iso8601
+Requires:  python-jsonschema
+Requires:  python-httplib2
+Requires:  python-oslo-log
 
 %description
 Library for creating test suites for OpenStack projects.
@@ -68,6 +71,9 @@ dos2unix html/_static/jquery.js
 %doc html doc/source/readme.rst
 
 %changelog
+* Thu Apr 09 2015 Steve Linabery <slinaber@redhat.com> - 0.4.0-2
+- Add missing Requires needed by new requirements.txt
+
 * Thu Apr 09 2015 Steve Linabery <slinaber@redhat.com> - 0.4.0-1
 - Rebase to upstream release 0.4.0
 
