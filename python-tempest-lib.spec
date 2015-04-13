@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.4.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OpenStack Functional Testing Library
 
 License:        ASL 2.0
@@ -21,11 +21,16 @@ BuildRequires:  python-oslo-sphinx
 BuildRequires:  dos2unix
 Requires:  python-babel
 Requires:  python-fixtures
-Requires:  python-oslo-config
 Requires:  python-iso8601
 Requires:  python-jsonschema
 Requires:  python-httplib2
-Requires:  python-oslo-log
+Requires:  python-oslo-context >= 0.2.0
+Requires:  python-oslo-log >= 1.0.0
+Requires:  python-oslo-config >= 1.9.3
+Requires:  python-oslo-utils >= 1.4.0
+Requires:  python-oslo-i18n >= 1.5.0
+Requires:  python-oslo-serialization >= 1.4.0
+Requires:  python-oslo-concurrency >= 1.8.0
 
 %description
 Library for creating test suites for OpenStack projects.
@@ -71,6 +76,9 @@ dos2unix html/_static/jquery.js
 %doc html doc/source/readme.rst
 
 %changelog
+* Mon Apr 13 2015 Steve Linabery <slinaber@redhat.com> - 0.4.0-3
+- Add explicit minimum versions for kilo python-oslo-* dependencies
+
 * Thu Apr 09 2015 Steve Linabery <slinaber@redhat.com> - 0.4.0-2
 - Add missing Requires needed by new requirements.txt
 
