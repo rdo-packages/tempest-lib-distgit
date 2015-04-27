@@ -1,4 +1,3 @@
-# Created by pyp2rpm-1.1.1
 %global pypi_name tempest-lib
 
 Name:           python-%{pypi_name}
@@ -12,6 +11,7 @@ Source0:        https://pypi.python.org/packages/source/t/%{pypi_name}/%{pypi_na
 BuildArch:      noarch
 
 Patch0001: 0001-remove-shebang.patch
+Patch0002: 0002-remove-shebang-from-skip_tracker.patch
  
 BuildRequires:  python-devel
 BuildRequires:  python-pbr
@@ -20,9 +20,16 @@ BuildRequires:  python-oslo-sphinx
 BuildRequires:  dos2unix
 Requires:  python-babel
 Requires:  python-fixtures
-Requires:  python-oslo-config
-Requires:  python-oslo-log
 Requires:  python-iso8601
+Requires:  python-jsonschema
+Requires:  python-httplib2
+Requires:  python-oslo-context >= 0.2.0
+Requires:  python-oslo-log >= 1.0.0
+Requires:  python-oslo-config >= 1.9.3
+Requires:  python-oslo-utils >= 1.4.0
+Requires:  python-oslo-i18n >= 1.5.0
+Requires:  python-oslo-serialization >= 1.4.0
+Requires:  python-oslo-concurrency >= 1.8.0
 
 %description
 Library for creating test suites for OpenStack projects.
@@ -40,6 +47,7 @@ Documentation for %{name}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 %patch0001 -p1
+%patch0002 -p1
 # make doc build compatible with python-oslo-sphinx RPM
 #sed -i 's/oslosphinx/oslo.sphinx/' doc/source/conf.py
 
