@@ -2,7 +2,7 @@
 
 Name:           python-%{pypi_name}
 Version:        XXX
-Release:        XXX%{?dist}
+Release:        XXX
 Summary:        OpenStack Functional Testing Library
 
 License:        ASL 2.0
@@ -10,9 +10,6 @@ URL:            http://www.openstack.org/
 Source0:        https://pypi.python.org/packages/source/t/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-Patch0001: 0001-remove-shebang.patch
-Patch0002: 0002-remove-shebang-from-skip_tracker.patch
- 
 BuildRequires:  python-devel
 BuildRequires:  python-pbr
 BuildRequires:  python-sphinx
@@ -46,11 +43,11 @@ Documentation for %{name}
 %setup -q -n %{pypi_name}-%{upstream_version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%patch0001 -p1
-%patch0002 -p1
-# make doc build compatible with python-oslo-sphinx RPM
-#sed -i 's/oslosphinx/oslo.sphinx/' doc/source/conf.py
 
+# remove shebangs and fix permissions
+find -type f -a \( -name '*.py' -o -name 'py.*' \) \
+   -exec sed -i '1{/^#!/d}' {} \; \
+   -exec chmod u=rw,go=r {} \;
 
 %build
 %{__python2} setup.py build
