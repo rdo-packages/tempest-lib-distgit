@@ -1,5 +1,7 @@
 %global pypi_name tempest-lib
 
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+
 Name:           python-%{pypi_name}
 Version:        XXX
 Release:        XXX
