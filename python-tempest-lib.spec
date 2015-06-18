@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.4.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        OpenStack Functional Testing Library
 
 License:        ASL 2.0
@@ -76,6 +76,9 @@ dos2unix html/_static/jquery.js
 %doc html doc/source/readme.rst
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Mon Apr 13 2015 Steve Linabery <slinaber@redhat.com> - 0.4.0-3
 - Add explicit minimum versions for kilo python-oslo-* dependencies
 
