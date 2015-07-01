@@ -2,8 +2,8 @@
 %global pypi_name tempest-lib
 
 Name:           python-%{pypi_name}
-Version:        0.4.0
-Release:        4%{?dist}
+Version:        0.5.0
+Release:        1%{?dist}
 Summary:        OpenStack Functional Testing Library
 
 License:        ASL 2.0
@@ -31,6 +31,8 @@ Requires:  python-oslo-utils >= 1.4.0
 Requires:  python-oslo-i18n >= 1.5.0
 Requires:  python-oslo-serialization >= 1.4.0
 Requires:  python-oslo-concurrency >= 1.8.0
+Requires:  python-six
+Requires:  python-paramiko
 
 %description
 Library for creating test suites for OpenStack projects.
@@ -49,8 +51,6 @@ Documentation for %{name}
 rm -rf %{pypi_name}.egg-info
 %patch0001 -p1
 %patch0002 -p1
-# make doc build compatible with python-oslo-sphinx RPM
-sed -i 's/oslosphinx/oslo.sphinx/' doc/source/conf.py
 
 
 %build
@@ -76,6 +76,10 @@ dos2unix html/_static/jquery.js
 %doc html doc/source/readme.rst
 
 %changelog
+* Wed Jul 01 2015 Steve Linabery <slinaber@redhat.com> - 0.5.0-1
+- Rebase to upstream release 0.5.0
+- Add Requires for six, paramiko
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
