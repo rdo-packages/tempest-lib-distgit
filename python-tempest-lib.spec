@@ -13,7 +13,7 @@ Source0:        https://pypi.python.org/packages/source/t/%{pypi_name}/%{pypi_na
 BuildArch:      noarch
 
 BuildRequires:  python-devel
-BuildRequires:  python-pbr
+BuildRequires:  python-pbr >= 1.6
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
 BuildRequires:  dos2unix
@@ -23,12 +23,14 @@ Requires:  python-iso8601
 Requires:  python-jsonschema
 Requires:  python-httplib2
 Requires:  python-oslo-context >= 0.2.0
-Requires:  python-oslo-log >= 1.0.0
+Requires:  python-oslo-log >= 1.8.0
 Requires:  python-oslo-config >= 1.9.3
 Requires:  python-oslo-utils >= 1.4.0
 Requires:  python-oslo-i18n >= 1.5.0
 Requires:  python-oslo-serialization >= 1.4.0
 Requires:  python-oslo-concurrency >= 1.8.0
+Requires:  python2-os-testr >= 0.1.0
+Requires:  python-paramiko
 
 %description
 Library for creating test suites for OpenStack projects.
@@ -65,8 +67,8 @@ dos2unix html/_static/jquery.js
 %files
 %doc README.rst HACKING.rst AUTHORS ChangeLog CONTRIBUTING.rst
 %license LICENSE
-%{_bindir}/subunit-trace
 %{_bindir}/skip-tracker
+%{_bindir}/check-uuid
 %{python2_sitelib}/tempest_lib
 %{python2_sitelib}/tempest_lib-%{upstream_version}-py?.?.egg-info
 
