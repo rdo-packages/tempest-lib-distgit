@@ -2,7 +2,7 @@
 %global pypi_name tempest-lib
 
 Name:           python-%{pypi_name}
-Version:        0.5.0
+Version:        0.10.0
 Release:        1%{?dist}
 Summary:        OpenStack Functional Testing Library
 
@@ -11,11 +11,9 @@ URL:            http://www.openstack.org/
 Source0:        https://pypi.python.org/packages/source/t/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-Patch0001: 0001-remove-shebang.patch
-Patch0002: 0002-remove-shebang-from-skip_tracker.patch
  
 BuildRequires:  python-devel
-BuildRequires:  python-pbr
+BuildRequires:  python-pbr >= 1.6
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
 BuildRequires:  dos2unix
@@ -25,13 +23,13 @@ Requires:  python-iso8601
 Requires:  python-jsonschema
 Requires:  python-httplib2
 Requires:  python-oslo-context >= 0.2.0
-Requires:  python-oslo-log >= 1.0.0
+Requires:  python-oslo-log >= 1.8.0
 Requires:  python-oslo-config >= 1.9.3
 Requires:  python-oslo-utils >= 1.4.0
 Requires:  python-oslo-i18n >= 1.5.0
 Requires:  python-oslo-serialization >= 1.4.0
 Requires:  python-oslo-concurrency >= 1.8.0
-Requires:  python-six
+Requires:  python2-os-testr >= 0.1.0
 Requires:  python-paramiko
 
 %description
@@ -49,8 +47,11 @@ Documentation for %{name}
 %setup -q -n %{pypi_name}-%{version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
-%patch0001 -p1
-%patch0002 -p1
+
+# remove shebangs and fix permissions
+find -type f -a \( -name '*.py' -o -name 'py.*' \) \
+   -exec sed -i '1{/^#!/d}' {} \; \
+   -exec chmod u=rw,go=r {} \;
 
 
 %build
@@ -67,8 +68,8 @@ dos2unix html/_static/jquery.js
 %files
 %doc README.rst HACKING.rst AUTHORS ChangeLog CONTRIBUTING.rst
 %license LICENSE
-%{_bindir}/subunit-trace
 %{_bindir}/skip-tracker
+%{_bindir}/check-uuid
 %{python2_sitelib}/tempest_lib
 %{python2_sitelib}/tempest_lib-%{version}-py?.?.egg-info
 
@@ -76,6 +77,9 @@ dos2unix html/_static/jquery.js
 %doc html doc/source/readme.rst
 
 %changelog
+* Wed Oct 28 2015 Steve Linabery <slinaber@redhat.com> - 0.10.0-1
+- Rebase to upstream release 0.10.0
+
 * Wed Jul 01 2015 Steve Linabery <slinaber@redhat.com> - 0.5.0-1
 - Rebase to upstream release 0.5.0
 - Add Requires for six, paramiko
