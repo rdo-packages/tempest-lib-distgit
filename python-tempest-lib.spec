@@ -2,7 +2,7 @@
 %global pypi_name tempest-lib
 
 Name:           python-%{pypi_name}
-Version:        0.10.0
+Version:        0.11.0
 Release:        1%{?dist}
 Summary:        OpenStack Functional Testing Library
 
@@ -29,7 +29,7 @@ Requires:  python-oslo-utils >= 1.4.0
 Requires:  python-oslo-i18n >= 1.5.0
 Requires:  python-oslo-serialization >= 1.4.0
 Requires:  python-oslo-concurrency >= 1.8.0
-Requires:  python2-os-testr >= 0.1.0
+Requires:  python2-os-testr >= 0.4.1
 Requires:  python-paramiko
 
 %description
@@ -77,6 +77,10 @@ dos2unix html/_static/jquery.js
 %doc html doc/source/readme.rst
 
 %changelog
+* Wed Oct 28 2015 Steve Linabery <slinaber@redhat.com> - 0.11.0-1
+- Rebase to upstream release 0.11.0
+- bump version requires for os-testr
+
 * Wed Oct 28 2015 Steve Linabery <slinaber@redhat.com> - 0.10.0-1
 - Rebase to upstream release 0.10.0
 
