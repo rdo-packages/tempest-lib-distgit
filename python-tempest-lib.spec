@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.11.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Functional Testing Library
 
 License:        ASL 2.0
@@ -77,6 +77,9 @@ dos2unix html/_static/jquery.js
 %doc html doc/source/readme.rst
 
 %changelog
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.11.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Wed Oct 28 2015 Steve Linabery <slinaber@redhat.com> - 0.11.0-1
 - Rebase to upstream release 0.11.0
 - bump version requires for os-testr
