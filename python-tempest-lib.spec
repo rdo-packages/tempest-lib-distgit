@@ -63,12 +63,13 @@ dos2unix html/_static/jquery.js
 
 %install
 %{__python2} setup.py install --skip-build --root %{buildroot}
+# workaround for https://bugs.launchpad.net/tempest/+bug/1555825
+rm %{buildroot}%{_bindir}/skip-tracker
+rm %{buildroot}%{_bindir}/check-uuid
 
 %files
 %doc README.rst HACKING.rst AUTHORS ChangeLog CONTRIBUTING.rst
 %license LICENSE
-%{_bindir}/skip-tracker
-%{_bindir}/check-uuid
 %{python2_sitelib}/tempest_lib
 %{python2_sitelib}/tempest_lib-%{upstream_version}-py?.?.egg-info
 
