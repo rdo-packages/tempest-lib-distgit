@@ -77,5 +77,3 @@ rm %{buildroot}%{_bindir}/check-uuid
 %doc html doc/source/readme.rst
 
 %changelog
-* Tue Jan 20 2015 Steve Linabery <slinaber@redhat.com> - 0.0.4-1
-- Initial package.
