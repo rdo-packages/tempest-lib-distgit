@@ -35,6 +35,10 @@ Requires:  python-paramiko
 %description
 Library for creating test suites for OpenStack projects.
 
+As of 1.0.0 tag this package has been deprecated and will
+no longer be updated.  All future development was moved into
+tempest project.
+
 %package doc
 Summary: Documentation for %{name}
 Group: Documentation
